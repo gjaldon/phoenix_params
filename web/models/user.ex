@@ -21,3 +21,9 @@ defmodule PhoenixParams.User do
     |> cast(params, @required_fields, @optional_fields)
   end
 end
+
+defimpl Phoenix.Param, for: PhoenixParams.User do
+  def to_param(%{username: username}) do
+    username
+  end
+end
