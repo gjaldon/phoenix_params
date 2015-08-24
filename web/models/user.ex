@@ -1,5 +1,6 @@
 defmodule PhoenixParams.User do
   use PhoenixParams.Web, :model
+  @derive {Phoenix.Param, key: :username}
 
   schema "users" do
     field :username, :string
@@ -19,11 +20,5 @@ defmodule PhoenixParams.User do
   def changeset(model, params \\ :empty) do
     model
     |> cast(params, @required_fields, @optional_fields)
-  end
-end
-
-defimpl Phoenix.Param, for: PhoenixParams.User do
-  def to_param(%{username: username}) do
-    username
   end
 end
